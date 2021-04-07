@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Samuel Cies Gracia">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="./img/logo.png">
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!--<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Mitr:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Mitr:wght@700&family=Monoton&display=swap" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Lilita+One&family=Mitr:wght@500;700&family=Monoton&display=swap" rel="stylesheet">
+    <title>My Drive - Almacenamiento de archivos remoto</title>
+   
+</head>
+<body>
+    <!-- Header -->
+    <div id="header">
+        <!-- Nav bar-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+            <a class="navbar-brand ml-5 text-white" href="index.html">
+                <img src="./img/logo.png" width="30" height="30" alt="">
+                My Drive
+              </a>
+            <div class="collapse navbar-collapse mr-5" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link text-white login" data-toggle="modal" data-target="#Login" href="#">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link text-white login" data-toggle="modal" data-target="#singup"  href="#">Registrarse</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        <div id="background">
+          <div class="wellcome">
+            <h1>MY DRIVE</h1>
+            <p>Tú y tus archivos siempre juntos.</p>
+          </div>          
+        </div>
+    </div>
+
+    <!-- Wrapper -->
+    <div class="wrapper">
+      <h2>¿Qué es My Drive?</h2>
+      <hr>
+      <div class="info">
+        <img src="./img/ilustracion2.jpg" alt="cloud-drive">
+        <p>My Drive es una plataforma de almacenamiento de archivos remoto, esto te permitirá poder almacenar y consultar los archivos que hayas subido desde cualquier lugar, siempre y cuando tengas una conexión a internet.</p>
+      </div>
+    </div>
+    <br>
+    
+      <div class="wrapper">
+        <h2 class="pt-4">¿Cómo funciona?</h2>
+        <hr>
+          <div class="info info2">
+            <p> Todos tus archivos se encuentran en nuestros servidores y protegidos a la vista de curiosos que no pintan nada en tus archivos.</p>
+            <img src="./img/ilustracion4.jpg" alt="cloud-drive">
+          </div>
+      </div>
+    
+    <div class="wrapper">
+      <h2>¿Es completamente gratis?</h2>
+      <hr>
+      <div class="info ">
+        <img src="./img/ilustracion5.jpeg" alt="cloud-drive">
+        <p>My Drive es completamente GRATIS dado que aún está en desarrollo. My Drive es un proyecto desarrollado por nuestro CEO para un proyecto de final de grado.</p>
+      </div>
+    </div>
+    <br>
+        
+    <!-- Login Modal -->
+        <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle" >Iniciar Sesión</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form method="POST" action="./php/login.php" id="login-form">
+                    <input type="text" name="usuarioL" id="usuarioL" placeholder="Usuario o Correo electrónico">
+                    <br>
+                    <input type="password" name="passwordL" id="passwordL" placeholder="Contraseña">
+              </div>
+              <div class="modal-footer">
+                <input type="submit" class="btn btn-primary" value="Iniciar Sesión" name="login">
+              </div>
+            </form>
+            </div>
+          </div>
+          </div>
+
+    <!-- Sing Up Modal -->
+        <div class="modal fade" id="singup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle" >Crear cuenta nueva</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+                <div id="msg"></div>
+                <div id="error" class="alert alert-danger ocultar" role="alert">
+                    Las contraseñas no coinciden. 😅
+                </div>
+              <div class="modal-body">
+                <form onsubmit="comprueba(); return false" method="POST" action="./php/registro.php" id="singup-form">
+                    <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario *" required>
+                    <br>
+                    <input type="text" name="email" id="email" placeholder="Correo electrónico *" required>
+                    <br>
+                    <input type="text" name="ape1" id="ape1" placeholder="Primer apellido">
+                    <br>
+                    <input type="text" name="ape2" id="ape2" placeholder="Segundo apellido">
+                    <br>
+                    <input type="password" name="password" id="password" placeholder="Contraseña *" required>
+                    <br>
+                    <input type="password" id="repite" placeholder="Repite la contraseña *" required>
+                    <br>
+              </div>
+              <div class="modal-footer">
+                <input type="submit" class="btn btn-primary" value="Registrarse" name="singup">
+              </div>
+            </form>
+            </div>
+          </div>
+          </div>
+
+    <!-- Footer & Copyright-->
+    <footer id="footer">
+      <div id="footer1">
+        <div>
+          <h3>¿Por qué MY DRIVE?</h3>
+          <br>
+          <p>Bueno... El nombre aún no es definitivo, estamos trabajando principalmente para sacar la aplicación adelante, seguramente hagamos un cambio de nombre o tal vez si sea el definitivo, de todas formas lo mas importante para nosotros es que puedas disfrutar de la aplicación.</p>
+        </div>
+        <div>
+          <h3>¿Dónde estamos?</h3>
+          <br>
+          <p style="text-align: center; margin-bottom: 0px;">C/ Río Guadarranque nº5</p>
+          <p style="text-align: center;">11500 - El Puerto De Santa María (Cádiz)</p>
+        </div>
+        <div>
+          <h3>Contáctanos</h3>
+          <br>
+          <p >Ponte en contacto con nosotros a través de <strong>soporte@mydrive.com</strong> o visita nuestras oficinas y estaremos encantado de resolver tus dudas.</p>
+        </div>
+        
+      </div>
+      <div id="footer2">
+        <p>&copy; 2021 MY DRIVE - Samuel Cies Gracia</p>
+      </div>
+    </footer>
+  
+    
+    <script src="./jquery/jquery-3.6.0.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript">
+    
+        function comprueba(){
+            // Ontenemos los valores de los campos de contraseñas 
+          contrasena = document.getElementById('password');
+          repite = document.getElementById('repite');
+  
+          // Verificamos si las constraseñas no coinciden 
+            if (contrasena.value != repite.value) {
+    
+            // Si las constraseñas no coinciden mostramos un mensaje 
+            document.getElementById("error").classList.add("mostrar");
+    
+            return false;
+          } else {
+ 
+              // Si las contraseñas coinciden ocultamos el mensaje de error
+              document.getElementById("error").classList.remove("mostrar");
+
+              // Desabilitamos el botón de login 
+              document.getElementById("registrarseB").disabled = true;
+              return true;
+        }
+      }
+
+</script>
+    
+</body>
+</html>

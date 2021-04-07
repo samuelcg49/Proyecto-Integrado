@@ -1,0 +1,173 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+/* Header styles */
+#background{
+    padding-top: calc(7rem + 72px);
+    padding-bottom: 7rem;
+    /*background: linear-gradient(0deg,#54bbf7 0,#2a69c7 100%);
+    background: linear-gradient(0deg,#0080ff 0, #0062d1 100%);*/
+    background: linear-gradient(0deg,#3a99f8 0, #0062d1 100%);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    background-size: cover;
+    height: 700px;
+    display: flex;
+    transform: skewY(-3deg);
+}
+
+nav{
+    margin-bottom: -130px;
+    z-index: 1;
+    color: white;
+    font-family: "Lato", sans-serif;
+}
+
+.wellcome{
+    margin: 0px auto;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    transform: skewY(3deg);
+}
+
+.wellcome h1{
+    font-size: 80px;
+    color: white;
+    font-family: "Monoton","Lato", sans-serif;
+}
+
+.wellcome p{
+    font-size: 40px;
+    color: white;
+    font-family: "Lato", sans-serif;
+}
+
+/* Underline Links*/
+.navbar .navbar-nav .nav-link {
+    color: white;
+    font-size: 1.1em;
+    position: relative;
+}
+.navbar .navbar-nav .nav-link::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: white;
+    color: transparent;
+    width: 0%;
+    content: '.';
+    height: 3px;
+}
+
+.navbar .navbar-nav .nav-link:hover::after {
+    width: 100%;
+    transition: all 0.35s;
+}
+
+/* Content wraper */
+.wrapper{
+    width: 70%;
+    margin: 0px auto; 
+}
+
+.wrapper h2{
+    margin-top: 70px;
+    font-size: 40px;
+    margin-bottom: 35px;
+    text-align: center;
+    font-family: "Mitr";
+    color: rgba(38, 40, 44, 0.9);
+}
+.info{
+    display: flex;
+    align-items: center;
+}
+
+.info img{
+    width: 400px;
+    padding: 30px;
+    background: white;
+    /*height: 370px;
+    border-radius: 20px;*/
+    border-radius: 100%;
+    box-shadow: 5px 5px 50px 2px rgba(0, 0, 0, 0.2);
+    float: left;
+}
+
+.info p {
+    font-family: "Lato", sans-serif;
+    margin-left: 80px;
+    font-size: 28px;
+    color: rgba(38, 40, 44, 0.9);
+}
+.info2 p{
+    margin-left: -20px;
+    margin-right: 60px;
+}
+
+.blk-background{
+    background: rgba(38, 40, 44, 0.9);
+    padding-bottom: 50px;
+}
+/* SingUP msg */
+.ocultar {
+    display: none;
+}
+ 
+.mostrar {
+    display: block;
+}
+/*Login Form*/
+#login-form input[type="text"], input[type="password"], #singup-form input[type="text"], input[type="password"]{
+    padding: 4px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(38, 40, 44, 0.9);
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+}
+
+/* FOOTER */
+#footer{
+    margin-top: 70px;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+#footer1{
+    color: rgba(38, 40, 44, 0.9);
+    background: #f4f4f4;
+    height: 300px;
+    padding: 50px;
+    grid-column: 1 / 3 ;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    padding: 50px;
+    text-align: justify;
+}
+
+#footer1 h3{
+    text-align: center;
+    font-family: "Mitr", "sans-serif";
+}
+#footer1 p{
+    font-family: "Lato", "sans-serif";
+}
+
+#footer2{
+    background: rgba(38, 40, 44, 0.9);
+    color: #a5a5a5;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Lato", "sans-serif";
+}
