@@ -1,0 +1,36 @@
+.createElement{
+    color: #3a99f8;
+    font-size: 35px;
+}
+
+#nuevoElemento{
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+#botones{
+    height: auto;
+    float: right;
+}
+
+#archivos{
+    padding: 20px;
+    border-radius: 10px;
+    /*margin: 20px 80px 80px 150px;*/
+    width: 90%;
+    margin: 0px auto;
+    height: auto;
+    box-shadow: 2px 2px 20px  rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.folder, .file{
+    font-size: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+}

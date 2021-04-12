@@ -21,7 +21,7 @@ $contrasena = $_POST["passwordL"];
 
                     $_SESSION["Usuario_logueado"] = $datosUser['nombre'];
 
-                    header("Location: ./php/dashboard.php");
+                    header("Location: dashboard.php");
 
                 }else{
                     printf('
