@@ -21,7 +21,7 @@ $contrasena = $_POST["passwordL"];
 
                     $_SESSION["Usuario_logueado"] = $datosUser['nombre'];
 
-                    header("Location: dashboard.php");
+                    header("Location: dashboard.php");                      //Una vez que la sesión del usuario se crea correctamente, lo redirije al dashboard
 
                 }else{
                     printf('

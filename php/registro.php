@@ -38,8 +38,9 @@ $ape2 = $_POST["ape2"];
             $sql = "INSERT INTO t_usuarios (nombre,contrasena,email,ape1,ape2) VALUES ('$usuario','$encriptada','$email','$ape1','$ape2')"; 
             mysqli_query($conexion, $sql); 
 
-            mkdir("../ficheros/$usuario", 0777, true); /* Crea el directorio con el nombre de usuario al momento de registrarse */
-            
+                                                // Crea el directorio con el nombre de usuario al momento de registrarse 
+            mkdir("../ficheros/$usuario", 0777, true);  //a esta carpeta accederá en el momento de iniciar sesión
+
                     printf('
                     <div class="alert alert-success text-center" role="alert">
                         <h2>Usuario registrado con éxito.</h2>

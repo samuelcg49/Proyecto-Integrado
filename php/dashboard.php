@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-if(empty($_SESSION["Usuario_logueado"])){
+if(empty($_SESSION["Usuario_logueado"])){       //Si la sesión de usuario no se ha iniciado no se puede acceder al dashboard
 
-    header("Location: ../index.html");
+    header("Location: ../index.html");      //redirije en caso de intentar entrar sin sesión
   
   }else
   
-  
+  //Establece la ruta por defecto concatenado el nombre del usuario, es decir, su carpeta.
   $rutaUsuario = "../ficheros/".$_SESSION["Usuario_logueado"];
   $listar = null;
 
@@ -58,8 +58,8 @@ function explorer ($ruta, $listar){
                           <a href="?carpeta2='.$rutaR."/".$elemento.'">'.$elemento.'</a>
                           </div>
                       </div>';
-                      
-                    /* Para corregir el abrir ficheros, podemos hacer un enlace a un fichero php donde abra dicho archivo */
+                      //transfiere la ruta relativa por la URL al ser método GET
+                        // Toma de entrada la carpeta de los ficheros con el nombre de usuario
                   }else{
                       $listar .= '<div class="card m-3" style="border: none;">
                       <span class="far fa-file-alt file" ></span>
@@ -67,7 +67,7 @@ function explorer ($ruta, $listar){
                           <a  href="'.$ruta."/".$elemento.'" target="_blank">'.$elemento.'" </a>
                           </div>
                       </div>';
-                      /* Para corregir el abrir ficheros, podemos hacer un enlace a un fichero php donde abra dicho archivo */
+                      
                   }
                 
             }
@@ -90,8 +90,9 @@ function explorer2 ($ruta, $listar){
                       <a href="?carpeta2='.$rutaR."/".$elemento.'">'.$elemento.'</a>
                       </div>
                   </div>';
-                  
-                /* Para corregir el abrir ficheros, podemos hacer un enlace a un fichero php donde abra dicho archivo */
+                  //transfiere la ruta relativa por la URL al ser método GET
+                        // Toma de entrada la carpeta de los ficheros con el nombre de usuario
+                
               }else{
                   $listar .= '<div class="card m-3" style="border: none;">
                   <span class="far fa-file-alt file" ></span>
@@ -99,7 +100,7 @@ function explorer2 ($ruta, $listar){
                       <a  href="'.$ruta."/".$elemento.'" target="_blank">'.$elemento.'" </a>
                       </div>
                   </div>';
-                  /* Para corregir el abrir ficheros, podemos hacer un enlace a un fichero php donde abra dicho archivo */
+                  
               }
             
         }
@@ -150,13 +151,13 @@ function explorer2 ($ruta, $listar){
             <div id="migasPan">
                 <?php 
                 if(empty($_GET["carpeta"]) && empty($_GET["carpeta2"])){
-                    printf("<span class='migas'>Home/</span>");
+                    printf("<span class='migas'>Home/</span>"); //Si nos encontramos en la ruta PADRE muestra Home/
 
                 }elseif(isset($_GET["carpeta"])){
-                    printf("<span class='migas'>Home/".$_GET["carpeta"]."</span>");
+                    printf("<span class='migas'>Home/".$_GET["carpeta"]."</span>"); //Si hemos avanzado un nivel de carpeta muestra esto
 
                 }elseif(isset($_GET["carpeta2"])){
-                    printf("<span class='migas'>Home/".$_GET["carpeta2"]."</span>");
+                    printf("<span class='migas'>Home/".$_GET["carpeta2"]."</span>"); //A partir del nivel 2 en adelante
                 }
                 ?>
             </div>
@@ -170,14 +171,14 @@ function explorer2 ($ruta, $listar){
         <div id="archivos">
             <?php 
                 
-                if(empty($_GET["carpeta"]) && empty($_GET["carpeta2"])){
+                if(empty($_GET["carpeta"]) && empty($_GET["carpeta2"])){ //Si estamos en la carpeta PADRE los GET están vacios (Nivel raíz)
                     carpetaInicial($rutaUsuario, $listar);
                     
                 }else{
-                    if(empty($_GET["carpeta2"])){
+                    if(empty($_GET["carpeta2"])){   //Si el método GET de la carpeta a nivel 2 está vacia ejecuta la función (1er nivel)
                         $ruta = $rutaUsuario."/".$_GET["carpeta"];
                         explorer($ruta, $listar);
-                    }else{
+                }else{                                        //Si hemos avanzado al 2º nivel esto iterará hasta que salgamos, por lo tanto tenemos niveles infinitos.
                         $ruta = $rutaUsuario."/".$_GET["carpeta2"];
                         explorer2($ruta, $listar)  ;
                     }
@@ -201,8 +202,8 @@ function explorer2 ($ruta, $listar){
                   <div class="modal-body">
                     <form method="POST" action="crea.php" id="login-form">
                         <input type="text" name="carpeta44" id="carpeta44" placeholder="Nombre de la carpeta">
-                        <?php
-                            if(isset($_GET["carpeta"])){
+                        <?php               //Según en el nivel de carpeta que nos encontremos envía un imput oculto con dicha información.
+                            if(isset($_GET["carpeta"])){ 
                                 echo "<input type='hidden' name='ruta1' id='ruta1' value='".$_GET["carpeta"]."'>";
                             
                             }elseif(isset($_GET["carpeta2"])){
@@ -234,7 +235,7 @@ function explorer2 ($ruta, $listar){
                     <div class="modal-body">
                         <form method="POST" action="crea.php" id="login-form" enctype="multipart/form-data">
                             <input type="file" name="archivo">
-                            <?php
+                            <?php               //Según en el nivel de carpeta que nos encontremos envía un imput oculto con dicha información.
                             if(isset($_GET["carpeta"])){
                                 echo "<input type='hidden' name='ruta1' id='ruta1' value='".$_GET["carpeta"]."'>";
                             
