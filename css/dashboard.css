@@ -1,6 +1,8 @@
 .createElement{
     color: #3a99f8;
     font-size: 35px;
+    text-decoration: none;
+   
 }
 
 #nuevoElemento{
@@ -11,6 +13,17 @@
 #botones{
     height: auto;
     float: right;
+}
+#migasPan{
+    height: auto;
+    float: left;
+    margin-left: 100px;
+    margin-top: 30px;
+    background: #3a99f8;
+    padding: 3px 10px 3px 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
 }
 
 #archivos{
@@ -33,4 +46,15 @@
 
 a{
     text-decoration: none;
+}
+
+/* Modales de Bootstrap */
+#CrearCarpeta input[type="text"] {
+    padding: 4px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(38, 40, 44, 0.9);
+    width: 80%;
+    display: flex;
+    flex-direction: row;
 }
