@@ -97,7 +97,7 @@
             </form>
             </div>
           </div>
-          </div>
+        </div>
 
     <!-- Sing Up Modal -->
         <div class="modal fade" id="singup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -117,7 +117,7 @@
                 <form onsubmit="comprueba(); return false" method="POST" action="./php/registro.php" id="singup-form">
                     <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario *" required>
                     <br>
-                    <input type="text" name="email" id="email" placeholder="Correo electrónico *" required>
+                    <input type="email" name="email" id="email" placeholder="Correo electrónico *" required>
                     <br>
                     <input type="text" name="ape1" id="ape1" placeholder="Primer apellido">
                     <br>
@@ -173,21 +173,21 @@
           repite = document.getElementById('repite');
   
           // Verificamos si las constraseñas no coinciden 
-            if (contrasena.value != repite.value) {
+          if (contrasena.value != repite.value) {
     
             // Si las constraseñas no coinciden mostramos un mensaje 
             document.getElementById("error").classList.add("mostrar");
     
             return false;
-          } else {
+          }else {
  
-              // Si las contraseñas coinciden ocultamos el mensaje de error
-              document.getElementById("error").classList.remove("mostrar");
+            // Si las contraseñas coinciden ocultamos el mensaje de error
+            document.getElementById("error").classList.remove("mostrar");
 
-              // Desabilitamos el botón de login 
-              document.getElementById("registrarseB").disabled = true;
-              return true;
-        }
+            // Desabilitamos el botón de login 
+            document.getElementById("registrarseB").disabled = true;
+            return true;
+          }
       }
 
 </script>

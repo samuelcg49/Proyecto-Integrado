@@ -1,6 +1,6 @@
 <head><link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"></head>
 <?php
-session_start();
+
 $usuario = $_POST["usuario"];
 $contrasena = $_POST["password"];
 $email = $_POST["email"];

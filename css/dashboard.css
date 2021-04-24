@@ -44,8 +44,17 @@
     cursor: pointer;
 }
 
-a{
+#archivos a span, #ficheros a span{
+    color: black;
+}
+
+#archivos a, #ficheros a{
     text-decoration: none;
+    color: gray;
+}
+
+#archivos div:hover a, #archivos div:hover span{
+    color: #3a99f8;
 }
 
 /* Modales de Bootstrap */

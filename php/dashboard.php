@@ -20,18 +20,18 @@ function carpetaInicial ($rutaUsuario, $listar){
               if(is_dir($rutaUsuario."/".$elemento)){
                 $listar .= '
                   <div class="card m-3" style="border: none;">
-                  <span class="far fa-folder-open folder" ></span>
+                  
                       <div class="card-body text-center p-1">
-                      <a href="?carpeta='.$elemento.'">'.$elemento.'</a>
+                      <a href="?carpeta='.$elemento.'"><span class="far fa-folder-open folder " ></span><br>'.$elemento.'</a>
                       </div>
                   </div>';
                   
                 /* Para corregir el abrir ficheros, podemos hacer un enlace a un fichero php donde abra dicho archivo */
               }else{
                   $listar .= '<div class="card m-3" style="border: none;">
-                  <span class="far fa-file-alt file" ></span>
+                  
                       <div  class="card-body text-center p-1"> 
-                      <a  href="'.$rutaUsuario."/".$elemento.'" target="_blank">'.$elemento.'" </a>
+                      <a  href="'.$rutaUsuario."/".$elemento.'" target="_blank"><span class="far fa-file-alt file" ></span><br>'.$elemento.'" </a>
                       </div>
                   </div>';
                   /* Para corregir el abrir ficheros, podemos hacer un enlace a un fichero php donde abra dicho archivo */
@@ -53,18 +53,18 @@ function explorer ($ruta, $listar){
                   if(is_dir($ruta."/".$elemento)){
                     $listar .= '
                       <div class="card m-3" style="border: none;">
-                      <span class="far fa-folder-open folder" ></span>
+                      
                           <div class="card-body text-center p-1">
-                          <a href="?carpeta2='.$rutaR."/".$elemento.'">'.$elemento.'</a>
+                          <a href="?carpeta2='.$rutaR."/".$elemento.'"><span class="far fa-folder-open folder" ></span><br>'.$elemento.'</a>
                           </div>
                       </div>';
                       //transfiere la ruta relativa por la URL al ser método GET
                         // Toma de entrada la carpeta de los ficheros con el nombre de usuario
                   }else{
                       $listar .= '<div class="card m-3" style="border: none;">
-                      <span class="far fa-file-alt file" ></span>
+                      
                           <div  class="card-body text-center p-1"> 
-                          <a  href="'.$ruta."/".$elemento.'" target="_blank">'.$elemento.'" </a>
+                          <a  href="'.$ruta."/".$elemento.'" target="_blank"><span class="far fa-file-alt file" ></span><br>'.$elemento.'" </a>
                           </div>
                       </div>';
                       
@@ -76,18 +76,16 @@ function explorer ($ruta, $listar){
 }
 function explorer2 ($ruta, $listar){
     
-
     $rutaR = $_GET["carpeta2"];
-
     $directorio = opendir($ruta);
     while($elemento = readdir($directorio)){
         if($elemento != '.' && $elemento != '..'){
               if(is_dir($ruta."/".$elemento)){
                 $listar .= '
                   <div class="card m-3" style="border: none;">
-                  <span class="far fa-folder-open folder" ></span>
+                  
                       <div class="card-body text-center p-1">
-                      <a href="?carpeta2='.$rutaR."/".$elemento.'">'.$elemento.'</a>
+                      <a href="?carpeta2='.$rutaR."/".$elemento.'"><span class="far fa-folder-open folder" ></span><br>'.$elemento.'</a>
                       </div>
                   </div>';
                   //transfiere la ruta relativa por la URL al ser método GET
@@ -95,9 +93,9 @@ function explorer2 ($ruta, $listar){
                 
               }else{
                   $listar .= '<div class="card m-3" style="border: none;">
-                  <span class="far fa-file-alt file" ></span>
+                  
                       <div  class="card-body text-center p-1"> 
-                      <a  href="'.$ruta."/".$elemento.'" target="_blank">'.$elemento.'" </a>
+                      <a  href="'.$ruta."/".$elemento.'" target="_blank"><span class="far fa-file-alt file" ></span><br>'.$elemento.'" </a>
                       </div>
                   </div>';
                   
@@ -106,6 +104,7 @@ function explorer2 ($ruta, $listar){
         }
     }
     echo $listar;
+    
 }
   ?>
     <!DOCTYPE html>
@@ -176,11 +175,14 @@ function explorer2 ($ruta, $listar){
                     
                 }else{
                     if(empty($_GET["carpeta2"])){   //Si el método GET de la carpeta a nivel 2 está vacia ejecuta la función (1er nivel)
-                        $ruta = $rutaUsuario."/".$_GET["carpeta"];
+                        $ruta = $rutaUsuario."/".$_GET["carpeta"];  
                         explorer($ruta, $listar);
-                }else{                                        //Si hemos avanzado al 2º nivel esto iterará hasta que salgamos, por lo tanto tenemos niveles infinitos.
+                        
+                }else{              
+                              //Si hemos avanzado al 2º nivel esto iterará hasta que salgamos, por lo tanto tenemos niveles infinitos.
                         $ruta = $rutaUsuario."/".$_GET["carpeta2"];
-                        explorer2($ruta, $listar)  ;
+                        explorer2($ruta, $listar);
+                        
                     }
                 }
             ?>
@@ -191,74 +193,71 @@ function explorer2 ($ruta, $listar){
     
         <!-- Modal de crear carpeta -->
         <div class="modal fade" id="CrearCarpeta" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form method="POST" action="crea.php" id="login-form">
-                        <input type="text" name="carpeta44" id="carpeta44" placeholder="Nombre de la carpeta">
-                        <?php               //Según en el nivel de carpeta que nos encontremos envía un imput oculto con dicha información.
-                            if(isset($_GET["carpeta"])){ 
-                                echo "<input type='hidden' name='ruta1' id='ruta1' value='".$_GET["carpeta"]."'>";
-                            
-                            }elseif(isset($_GET["carpeta2"])){
-                                echo "<input type='hidden' name='ruta2' id='ruta2' value='".$_GET["carpeta2"]."'>";
-                            }else{
-                                echo "<input type='hidden' name='ruta' id='ruta' value=''>";
-                            }
-                                                    
-                        ?>
-                  </div>
-                  <div class="modal-footer">
-                    <input type="submit" class="btn btn-primary" value="Crear Carpeta" name="CrearCarpeta">
-                  </div>
-                </form>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="crea.php" id="login-form">
+                            <input type="text" name="carpeta44" id="carpeta44" placeholder="Nombre de la carpeta">
+                            <?php               //Según en el nivel de carpeta que nos encontremos envía un imput oculto con dicha información.
+                                if(isset($_GET["carpeta"])){ 
+                                    echo "<input type='hidden' name='ruta1' id='ruta1' value='".$_GET["carpeta"]."'>";
+                                
+                                }elseif(isset($_GET["carpeta2"])){
+                                    echo "<input type='hidden' name='ruta2' id='ruta2' value='".$_GET["carpeta2"]."'>";
+                                }else{
+                                    echo "<input type='hidden' name='ruta' id='ruta' value=''>";
+                                }
+                                                        
+                            ?>
+                    </div>
+                    <div class="modal-footer">
+                            <input type="submit" class="btn btn-primary" value="Crear Carpeta" name="CrearCarpeta">
+                        </form>
+                    </div>
                 </div>
-              </div>
-              </div>
+            </div>
+        </div>
     
               <!-- Modal de crear archivos -->
-            <div class="modal fade" id="CrearArchivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
+        <div class="modal fade" id="CrearArchivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
                     <div class="modal-header">
-                        
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <form method="POST" action="crea.php" id="login-form" enctype="multipart/form-data">
                             <input type="file" name="archivo">
-                            <?php               //Según en el nivel de carpeta que nos encontremos envía un imput oculto con dicha información.
-                            if(isset($_GET["carpeta"])){
-                                echo "<input type='hidden' name='ruta1' id='ruta1' value='".$_GET["carpeta"]."'>";
-                            
-                            }elseif(isset($_GET["carpeta2"])){
-                                echo "<input type='hidden' name='ruta2' id='ruta2' value='".$_GET["carpeta2"]."'>";
-                            }else{
-                                echo "<input type='hidden' name='ruta' id='ruta' value=''>";
-                            }
-                                                    
-                        ?>
+                                <?php               //Según en el nivel de carpeta que nos encontremos envía un imput oculto con dicha información.
+                                    if(isset($_GET["carpeta"])){
+                                        echo "<input type='hidden' name='ruta1' id='ruta1' value='".$_GET["carpeta"]."'>";
+                                    
+                                    }elseif(isset($_GET["carpeta2"])){
+                                        echo "<input type='hidden' name='ruta2' id='ruta2' value='".$_GET["carpeta2"]."'>";
+                                    }else{
+                                        echo "<input type='hidden' name='ruta' id='ruta' value=''>";
+                                    }
+                                                        
+                                ?>
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" class="btn btn-primary" value="Subir Archivo" name="SubirArchivo">
-                    </div>
-                    </form>
+                            <input type="submit" class="btn btn-primary" value="Subir Archivo" name="SubirArchivo">
+                        </form>
                     </div>
                 </div>
-                </div>
+            </div>
+        </div>
     
         <!-- Scripts -->
             <script src="../jquery/jquery-3.6.0.min.js"></script>
             <script src="../bootstrap/js/bootstrap.bundle.js"></script>
-            
     </body>
     </html>
     
