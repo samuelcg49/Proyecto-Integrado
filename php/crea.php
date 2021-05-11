@@ -17,7 +17,7 @@ if(isset($_POST["CrearCarpeta"])){
     $carpeta = htmlspecialchars($_POST["carpeta44"]);
     $directorio = $ruta."/".$carpeta;
 
-    if(!is_dir($directorio)){ // Comprueba si el directorio existe
+    if(!is_dir($directorio)){ // Comprueba si no existe el directorio para poder crearlo
 
         $crear = mkdir($directorio, 0777, true); //El valor true permite crear carpetas anidadas
 
