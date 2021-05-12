@@ -137,7 +137,7 @@ function explorer2 ($ruta, $listar){
                         <a class="dropdown-item" data-toggle="modal" data-target="#Mover" href="#" ><i class="fas fa-arrows-alt"></i> Mover</a>
                         <a class="dropdown-item" data-toggle="modal" data-target="#Renombrar" href="#" ><i class="fas fa-edit"></i> Renombrar</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#Eliminar" href="#"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#Eliminar" href="#"><i class="fas fa-trash-alt text-danger"></i> Eliminar</a>
                     </div>
                 </div>
             </div>

@@ -192,3 +192,177 @@ if(isset($_POST["Mover"])){
     }
     
 }
+
+if(isset($_POST["Renombrar"])){
+    //Comprueba a que nivel se encuentra el usuario (input oculto enviado) para poder elegir la ruta de creación
+    if(isset($_POST["ruta"])){
+        $ruta = "../ficheros/".$_SESSION["Usuario_logueado"];
+    }
+    if(isset($_POST["ruta1"])){
+        $ruta = "../ficheros/".$_SESSION["Usuario_logueado"]."/".$_POST["ruta1"];
+    }
+    if(isset($_POST["ruta2"])){
+        $ruta = "../ficheros/".$_SESSION["Usuario_logueado"]."/".$_POST["ruta2"];
+    }
+    
+    $oldName = htmlspecialchars($_POST["oldName"]);
+    $newName = htmlspecialchars($_POST["newName"]);
+
+    
+
+    if(is_dir($ruta."/".$oldName)){
+        
+        $renombrar = rename($ruta."/".$oldName, $ruta."/".$newName);
+
+        if($renombrar){
+            header("Location: dashboard.php?carpeta=".$_POST["ruta1"].$_POST["ruta2"].$_POST["ruta"]);
+        }else{
+            printf('
+                    <div class="alert alert-danger text-center" role="alert">
+                    <h2>Ha ocurrido un error inesperado</h2>
+                    </div>');               //Evita el warning de undefined variable
+                    if(!isset($_POST["ruta"])){ $_POST["ruta"]="";}
+                    if(!isset($_POST["ruta1"])){ $_POST["ruta1"]="";}
+                    if(!isset($_POST["ruta2"])){ $_POST["ruta2"]="";}
+                    header("Refresh: 1; URL=dashboard.php?carpeta=".$_POST["ruta1"].$_POST["ruta2"].$_POST["ruta"]);
+        }
+    }else{
+        printf('
+        <div class="alert alert-warning text-center" role="alert">
+        <h2>La carpeta especificada no existe</h2>
+        </div>');               //Evita el warning de undefined variable
+        if(!isset($_POST["ruta"])){ $_POST["ruta"]="";}
+        if(!isset($_POST["ruta1"])){ $_POST["ruta1"]="";}
+        if(!isset($_POST["ruta2"])){ $_POST["ruta2"]="";}
+        header("Refresh: 1; URL=dashboard.php?carpeta=".$_POST["ruta1"].$_POST["ruta2"].$_POST["ruta"]);
+    }
+
+    if(is_file($ruta."/".$oldName)){
+        
+        $renombrar = rename($ruta."/".$oldName, $ruta."/".$newName);
+
+        if($renombrar){
+            header("Location: dashboard.php?carpeta=".$_POST["ruta1"].$_POST["ruta2"].$_POST["ruta"]);
+        }else{
+            printf('
+                    <div class="alert alert-danger text-center" role="alert">
+                    <h2>Ha ocurrido un error inesperado</h2>
+                    </div>');               //Evita el warning de undefined variable
+                    if(!isset($_POST["ruta"])){ $_POST["ruta"]="";}
+                    if(!isset($_POST["ruta1"])){ $_POST["ruta1"]="";}
+                    if(!isset($_POST["ruta2"])){ $_POST["ruta2"]="";}
+                    header("Refresh: 1; URL=dashboard.php?carpeta=".$_POST["ruta1"].$_POST["ruta2"].$_POST["ruta"]);
+        }
+    }else{
+        printf('
+        <div class="alert alert-warning text-center" role="alert">
+        <h2>El archivo especificado no existe</h2>
+        </div>');               //Evita el warning de undefined variable
+        if(!isset($_POST["ruta"])){ $_POST["ruta"]="";}
+        if(!isset($_POST["ruta1"])){ $_POST["ruta1"]="";}
+        if(!isset($_POST["ruta2"])){ $_POST["ruta2"]="";}
+        header("Refresh: 1; URL=dashboard.php?carpeta=".$_POST["ruta1"].$_POST["ruta2"].$_POST["ruta"]);
+    }
+    
+}
+
+if(isset($_POST["Eliminar"])){
+    if(isset($_POST["ruta"])){
+        $ruta = "../ficheros/".$_SESSION["Usuario_logueado"];
+    }
+    if(isset($_POST["ruta1"])){
+        $ruta = "../ficheros/".$_SESSION["Usuario_logueado"]."/".$_POST["ruta1"];
+    }
+    if(isset($_POST["ruta2"])){
+        $ruta = "../ficheros/".$_SESSION["Usuario_logueado"]."/".$_POST["ruta2"];
+    }
+
+    $DeleteFile = htmlspecialchars($_POST["DeleteFile"]);
+    $directorio = $ruta."/".$DeleteFile;
+
+    if($DeleteFile == "/"){
+        printf('
+                        <div class="alert alert-danger text-center" role="alert">
+                        <h2>ERES UN TRAVIESO!</h2>
+                        </div>');               //Evita el warning de undefined variable
+                        if(!isset($_POST["ruta"])){ $_POST["ruta"]="";}
+                        if(!isset($_POST["ruta1"])){ $_POST["ruta1"]="";}
+                        if(!isset($_POST["ruta2"])){ $_POST["ruta2"]="";}
+                        header("Refresh: 1; URL=dashboard.php?carpeta=".$_POST["ruta1"].$_POST["ruta2"].$_POST["ruta"]);
+    }else{
+
+        if(is_dir($directorio)){
+        
+            $eliminar = Delete_dir($directorio);
+            
+            if($eliminar){
+                header("Location: dashboard.php?carpeta=".$_POST["ruta1"].$_POST["ruta2"].$_POST["ruta"]);
+            }else{
+                printf('
+                        <div class="alert alert-danger text-center" role="alert">
+                        <h2>No se ha podido eliminar la carpeta especificada</h2>
+                        </div>');               //Evita el warning de undefined variable
+                        if(!isset($_POST["ruta"])){ $_POST["ruta"]="";}
+                        if(!isset($_POST["ruta1"])){ $_POST["ruta1"]="";}
+                        if(!isset($_POST["ruta2"])){ $_POST["ruta2"]="";}
+                        header("Refresh: 1; URL=dashboard.php?carpeta=".$_POST["ruta1"].$_POST["ruta2"].$_POST["ruta"]);
+            }
+        }else{
+            printf('
+            <div class="alert alert-warning text-center" role="alert">
+            <h2>La carpeta especificada no existe</h2>
+            </div>');               //Evita el warning de undefined variable
+            if(!isset($_POST["ruta"])){ $_POST["ruta"]="";}
+            if(!isset($_POST["ruta1"])){ $_POST["ruta1"]="";}
+            if(!isset($_POST["ruta2"])){ $_POST["ruta2"]="";}
+            header("Refresh: 1; URL=dashboard.php?carpeta=".$_POST["ruta1"].$_POST["ruta2"].$_POST["ruta"]);
+        }
+    
+        if(is_file($directorio)){
+    
+            $eliminar = unlink($directorio);
+    
+            if($eliminar){
+                header("Location: dashboard.php?carpeta=".$_POST["ruta1"].$_POST["ruta2"].$_POST["ruta"]);
+            }else{
+                printf('
+                        <div class="alert alert-danger text-center" role="alert">
+                        <h2>No se ha podido eliminar el archivo especificado</h2>
+                        </div>');               //Evita el warning de undefined variable
+                        if(!isset($_POST["ruta"])){ $_POST["ruta"]="";}
+                        if(!isset($_POST["ruta1"])){ $_POST["ruta1"]="";}
+                        if(!isset($_POST["ruta2"])){ $_POST["ruta2"]="";}
+                        header("Refresh: 1; URL=dashboard.php?carpeta=".$_POST["ruta1"].$_POST["ruta2"].$_POST["ruta"]);
+            }
+
+        }else{
+            printf('
+            <div class="alert alert-warning text-center" role="alert">
+            <h2>El archivo especificado no existe</h2>
+            </div>');               //Evita el warning de undefined variable
+            if(!isset($_POST["ruta"])){ $_POST["ruta"]="";}
+            if(!isset($_POST["ruta1"])){ $_POST["ruta1"]="";}
+            if(!isset($_POST["ruta2"])){ $_POST["ruta2"]="";}
+            header("Refresh: 1; URL=dashboard.php?carpeta=".$_POST["ruta1"].$_POST["ruta2"].$_POST["ruta"]);
+        }
+    }
+    
+
+}
+
+function Delete_dir($directorio){
+    
+    foreach(glob($directorio."/*") as $archivo){
+        
+        if(is_dir($archivo)){            
+            
+            Delete_dir($archivo);
+        }else{
+            unlink($archivo);
+        }
+    }
+    $EliminarCarpeta = rmdir($directorio);
+    
+    return $EliminarCarpeta; //Devuelve true o false, es decir, el varlo de la variable.
+
+}

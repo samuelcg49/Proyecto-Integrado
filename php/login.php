@@ -18,11 +18,19 @@ $contrasena = $_POST["passwordL"];
             $datosUser = mysqli_fetch_assoc($consulta);
             
                 if(password_verify($contrasena, $datosUser['contrasena'])){
+                    //Comprueba que la carpeta existe en caso de que se haya borrado. Si no existe la crea.
+                    if(!is_dir("../ficheros".$datosUser['nombre'])){
+                        mkdir("../ficheros/".$datosUser['nombre'], 0777, true); 
 
-                    $_SESSION["Usuario_logueado"] = $datosUser['nombre'];
+                        $_SESSION["Usuario_logueado"] = $datosUser['nombre'];
 
-                    header("Location: dashboard.php");                      //Una vez que la sesión del usuario se crea correctamente, lo redirije al dashboard
+                        header("Location: dashboard.php"); 
+                    }else{
+                        $_SESSION["Usuario_logueado"] = $datosUser['nombre'];
 
+                        header("Location: dashboard.php");  
+                    }
+                                        //Una vez que la sesión del usuario se crea correctamente, lo redirije al dashboard
                 }else{
                     printf('
                     <div class="alert alert-danger text-center" role="alert">
