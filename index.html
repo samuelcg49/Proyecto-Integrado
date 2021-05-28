@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome-free-5.15.3-web/css/all.css">
     <link rel="icon" type="image/png" href="./img/logo.png">
     <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,14 +21,20 @@
 <body>
     <!-- Header -->
     <div id="header">
-        <!-- Nav bar-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+     
+        <!-- Navbar-->
+        <nav class="navbar navbar-expand-md navbar-light bg-transparent">
           <a class="navbar-brand ml-5 text-white" href="index.html">
-              <img src="./img/logo.png" width="30" height="30" alt="">
-              My Drive
-            </a>
-          <div class="collapse navbar-collapse mr-5" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
+            <img src="./img/logo.png" width="30" height="30" alt="">
+            My Drive
+          </a>
+
+          <button class="navbar-toggler " data-toggle="collapse" data-target="#navbarNav">
+            <span class="fas fa-bars text-white"></span>
+          </button>
+
+          <div class="collapse navbar-collapse mr-5 " id="navbarNav">
+            <ul class="navbar-nav ml-auto text-right">
               <li class="nav-item">
                 <a class="nav-link text-white login" data-toggle="modal" data-target="#Login" href="#">Iniciar Sesión</a>
               </li>
@@ -37,6 +44,9 @@
             </ul>
           </div>
         </nav>
+    
+
+        <!-- ***************   -->
         <div id="background">
           <div class="wellcome">
             <h1>MY DRIVE</h1>
@@ -51,16 +61,18 @@
       <hr>
       <div class="info">
         <img src="./img/ilustracion2.jpg" alt="cloud-drive">
+        <div class="clearfix"></div>
         <p>My Drive es una plataforma de almacenamiento de archivos remoto, esto te permitirá poder almacenar y consultar los archivos que hayas subido desde cualquier lugar, siempre y cuando tengas una conexión a internet.</p>
       </div>
     </div>
     <br>
     
       <div class="wrapper">
-        <h2 class="pt-4">¿Cómo funciona?</h2>
+        <h2 class="pt-1">¿Cómo funciona?</h2>
         <hr>
           <div class="info info2">
             <p> Todos tus archivos se encuentran en nuestros servidores y protegidos a la vista de curiosos que no pintan nada en tus archivos.</p>
+            <div class="clearfix"></div>
             <img src="./img/ilustracion4.jpg" alt="cloud-drive">
           </div>
       </div>
@@ -70,6 +82,7 @@
       <hr>
       <div class="info ">
         <img src="./img/ilustracion5.jpeg" alt="cloud-drive">
+        <div class="clearfix"></div>
         <p>My Drive es completamente GRATIS dado que aún está en desarrollo. My Drive es un proyecto desarrollado por nuestro CEO para un proyecto de final de grado.</p>
       </div>
     </div>
@@ -136,8 +149,8 @@
           </div>
           </div>
 
-    <!-- Footer & Copyright-->
-    <footer id="footer">
+     <!-- Footer & Copyright-->
+     <footer id="footer">
       <div id="footer1">
         <div>
           <h3>¿Por qué MY DRIVE?</h3>
@@ -150,7 +163,7 @@
           <p style="text-align: center; margin-bottom: 0px;">C/ Río Guadarranque nº5</p>
           <p style="text-align: center;">11500 - El Puerto De Santa María (Cádiz)</p>
         </div>
-        <div>
+        <div class="div4">
           <h3>Contáctanos</h3>
           <br>
           <p >Ponte en contacto con nosotros a través de <strong>soporte@mydrive.com</strong> o visita nuestras oficinas y estaremos encantado de resolver tus dudas.</p>
@@ -161,7 +174,6 @@
         <p>&copy; 2021 MY DRIVE - Samuel Cies Gracia</p>
       </div>
     </footer>
-  
     
     <script src="./jquery/jquery-3.6.0.min.js"></script>
     <script src="./bootstrap/js/bootstrap.bundle.js"></script>
