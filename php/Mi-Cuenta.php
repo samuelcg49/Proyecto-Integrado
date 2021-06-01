@@ -12,13 +12,13 @@
 <?php include_once("../includes/header.php");    
 
 define('DB_SERVER','localhost'); 
-define('DB_NAME','usuariosdisco'); 
-define('DB_USER','root'); 
-define('DB_PASS','napoleon1'); 
+define('DB_NAME','usuarios'); 
+define('DB_USER','proyecto'); 
+define('DB_PASS','proyecto'); 
 
     $conexion = mysqli_connect(DB_SERVER,DB_USER,DB_PASS,DB_NAME); 
     $user = $_SESSION["Usuario_logueado"];
-    $consulta = mysqli_query($conexion, "SELECT * FROM usuarios WHERE nombre = '$user' ");
+    $consulta = mysqli_query($conexion, "SELECT * FROM t_usuarios WHERE nombre = '$user' ");
 
   mysqli_query($conexion, "SET NAMES utf8");
 
@@ -50,12 +50,16 @@ printf('<div class="contenedor">
         printf("</tr>");
         printf("<tr>");
             printf("<td class='bg-primary' style='color: white;'> Fecha de alta </td>");
-            printf("<td>%s</td>",$datos["FchCreacion"]);
+            printf("<td>%s</td>",$datos["FchIngreso"]);
         printf("</tr>");
     }       
     
 printf("</table>
   </div> <br><br><br><br>");
-  
    
 ?>
+
+            <script src="../jquery/jquery-3.6.0.min.js"></script>
+            <script src="../bootstrap/js/bootstrap.bundle.js"></script>
+    </body>
+    </html>

@@ -1,3 +1,7 @@
+nav{
+    width: 100%;
+}
+
 .createElement{
     color: #3a99f8;
     font-size: 35px;
@@ -18,9 +22,11 @@
 
 #migasPan{
     height: auto;
+    display: flex;
     float: left;
-    margin-left: 100px;
-    margin-top: 30px;
+    
+    margin: 30px 100px 10px 100px;
+    
     background: #3a99f8;
     padding: 3px 10px 3px 10px;
     border-radius: 5px;
@@ -73,7 +79,7 @@
 .contenedor{
     width: 800px;
     margin: 0px auto;
-    }
+}
 
 .contenedor h2{
     text-align: center;
@@ -110,4 +116,47 @@ table th {
 
 #options{
     font-size: 25px;
+}
+.clear-fix{
+    float: none;
+    clear: both;
+}
+/* MEDIAS QUERIES */
+
+@media (max-width: 900px ){
+    #archivos{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+}
+
+@media (max-width: 860px){
+    #migasPan{
+        display: none;
+    }
+}
+
+@media (max-width: 800px){
+    .contenedor{
+        width: auto;
+    }
+}
+
+@media (max-width: 600px ){
+    #archivos{
+        grid-template-columns: repeat(3, 1fr);
+    }
+   
+}
+
+@media (max-width: 450px ){
+    #archivos{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 320px ){
+    #archivos{
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

@@ -111,19 +111,7 @@ function explorer2 ($ruta, $listar){
         <br>
         <!-- Botones para crear archivos y ficheros -->
         <div id="nuevoElemento">
-            <div id="migasPan">
-                <?php 
-                if(empty($_GET["carpeta"]) && empty($_GET["carpeta2"])){
-                    printf("<span class='migas'>Home/</span>"); //Si nos encontramos en la ruta PADRE muestra Home/
-
-                }elseif(isset($_GET["carpeta"])){
-                    printf("<span class='migas'>Home/".$_GET["carpeta"]."</span>"); //Si hemos avanzado un nivel de carpeta muestra esto
-
-                }elseif(isset($_GET["carpeta2"])){
-                    printf("<span class='migas'>Home/".$_GET["carpeta2"]."</span>"); //A partir del nivel 2 en adelante
-                }
-                ?>
-            </div>
+            
             <div id="botones">
                 <a data-toggle="modal" data-target="#CrearCarpeta" href="#" class="fas fa-folder-plus createElement mr-4"></a>
                 <a data-toggle="modal" data-target="#CrearArchivo" href="#" class="fas fa-file-medical createElement "></a>
@@ -141,6 +129,21 @@ function explorer2 ($ruta, $listar){
                     </div>
                 </div>
             </div>
+            <div class="clear-fix"></div>
+            <div id="migasPan">
+                <?php 
+                if(empty($_GET["carpeta"]) && empty($_GET["carpeta2"])){
+                    printf("<span class='migas'>Home/</span>"); //Si nos encontramos en la ruta PADRE muestra Home/
+
+                }elseif(isset($_GET["carpeta"])){
+                    printf("<span class='migas'>Home/".$_GET["carpeta"]."</span>"); //Si hemos avanzado un nivel de carpeta muestra esto
+
+                }elseif(isset($_GET["carpeta2"])){
+                    printf("<span class='migas'>Home/".$_GET["carpeta2"]."</span>"); //A partir del nivel 2 en adelante
+                }
+                ?>
+            </div>
+            
         </div>
         <br>
         <!-- Parte donde se muestran los ficheros y carpetas del usuario -->
@@ -171,9 +174,8 @@ function explorer2 ($ruta, $listar){
         
     
         <!-- Scripts -->
-       <script src="../jquery/jquery-3.6.0.min.js"></script>
+            <script src="../jquery/jquery-3.6.0.min.js"></script>
             <script src="../bootstrap/js/bootstrap.bundle.js"></script>
-            <script src="../js/context-menu.js"></script>
     </body>
     </html>
     
