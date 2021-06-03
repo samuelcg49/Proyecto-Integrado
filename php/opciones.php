@@ -2,7 +2,7 @@
 <?php
 session_start();
 
-
+// OPCIÓN DE COPIAR ARCHIVOS
 if(isset($_POST["Copiar"])){
     
     //Comprueba a que nivel se encuentra el usuario (input oculto enviado) para poder elegir la ruta de creación
@@ -105,7 +105,7 @@ if(isset($_POST["Copiar"])){
 
 
 }
-
+ //FUNCIÓN PARA COPIAS RECURSIVAS
 function full_copy( $source, $target ) {
     if ( is_dir( $source ) ) {
         @mkdir( $target );
@@ -129,6 +129,7 @@ function full_copy( $source, $target ) {
     return true;
 }
 
+ // OPCIÓN DE MOVER ARCHIVOS
 if(isset($_POST["Mover"])){
     //Comprueba a que nivel se encuentra el usuario (input oculto enviado) para poder elegir la ruta de creación
     if(isset($_POST["ruta"])){
@@ -145,7 +146,7 @@ if(isset($_POST["Mover"])){
     
     $ruta2 = htmlspecialchars($_POST["RutaElemento"]);
     
-    $directorio2 = "../ficheros/".$_SESSION["Usuario_logueado"].$ruta2;
+    $directorio2 = "../ficheros/".$_SESSION["Usuario_logueado"]."/".$ruta2;
     $directorio = $ruta."/".$elemento1;
 
     if(is_dir($directorio) || file_exists($directorio)){
@@ -192,7 +193,7 @@ if(isset($_POST["Mover"])){
     }
     
 }
-
+//OPCIÓN DE RENOMBRAR ARCHIVOS
 if(isset($_POST["Renombrar"])){
     //Comprueba a que nivel se encuentra el usuario (input oculto enviado) para poder elegir la ruta de creación
     if(isset($_POST["ruta"])){
@@ -265,7 +266,7 @@ if(isset($_POST["Renombrar"])){
     }
     
 }
-
+//ÚLTIMA OPCIÓN: ELIMINAR ARCHIVOS
 if(isset($_POST["Eliminar"])){
     if(isset($_POST["ruta"])){
         $ruta = "../ficheros/".$_SESSION["Usuario_logueado"];
@@ -278,7 +279,7 @@ if(isset($_POST["Eliminar"])){
     }
 
     $DeleteFile = htmlspecialchars($_POST["DeleteFile"]);
-    $directorio = $ruta.$DeleteFile;
+    $directorio = $ruta."/".$DeleteFile;
 
     if($DeleteFile == "/"){
         printf('
@@ -350,6 +351,7 @@ if(isset($_POST["Eliminar"])){
 
 }
 
+//FUNCIÓN PARA ELIMINAR CARPETAS CON CONTENIDO
 function Delete_dir($directorio){
     
     foreach(glob($directorio."/*") as $archivo){
