@@ -205,19 +205,8 @@ input[type="text"], input[type="password"], input[type="email"] {
         grid-template-columns: repeat(2, 1fr);
         height: 500px;
     }
-    
-    
-    /*.navbar-expand-lg .navbar-collapse {
-        display: -ms-flexbox!important;
-        display: flex!important;
-        -ms-flex-preferred-size: auto;
-        flex-basis: auto;
-    }
-    
-    nav ul li{
-        width: auto;
-    }*/
 }
+
 @media (min-width: 670px) and (max-width: 995px){
     .div4{
         grid-area: 2 / 1 / 3 / 4;
@@ -312,7 +301,7 @@ input[type="text"], input[type="password"], input[type="email"] {
     }
     #footer1 {
         
-        height: 620px;
+        height: 630px;
     }
     .wrapper h2{
         font-size: 30px;
@@ -324,8 +313,9 @@ input[type="text"], input[type="password"], input[type="email"] {
         margin: 0px 0px 0px 60px;
     }
     #footer1 {
-        height: 710px;
+        height: 720px;
     }
+    
 }
 @media (max-width: 322px){
     .info img{

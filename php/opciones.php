@@ -278,7 +278,7 @@ if(isset($_POST["Eliminar"])){
     }
 
     $DeleteFile = htmlspecialchars($_POST["DeleteFile"]);
-    $directorio = $ruta."/".$DeleteFile;
+    $directorio = $ruta.$DeleteFile;
 
     if($DeleteFile == "/"){
         printf('
